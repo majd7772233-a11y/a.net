@@ -14,6 +14,7 @@
   <div class="ambient-light ambient-one" aria-hidden="true"></div>
   <div class="ambient-light ambient-two" aria-hidden="true"></div>
   <div class="ambient-light ambient-three" aria-hidden="true"></div>
+  <a class="skip-link" href="#portalMain">تخطي إلى المحتوى الرئيسي</a>
   <div id="customAlert" role="dialog" aria-modal="true" aria-labelledby="alertTitle" aria-describedby="alertMessage" style="display:none;">
     <div class="alert-box">
       <div class="alert-symbol" aria-hidden="true">✦</div>
@@ -24,7 +25,7 @@
       </div>
     </div>
   </div>
-  <main class="container">
+  <main id="portalMain" class="container" tabindex="-1">
     <div class="screen">
       <div class="screen-content">
         <section class="login" aria-labelledby="portalTitle">
@@ -58,7 +59,7 @@
               <span class="heading-icon" aria-hidden="true">↗</span>
             </div>
 
-            <form name="login">
+            <form name="login" aria-label="بيانات تسجيل الدخول">
               <input type="hidden" name="dst" value="">
               <input type="hidden" name="popup" value="true">
               <p class="error" id="error" role="alert" aria-live="assertive"></p>
@@ -66,7 +67,7 @@
               <div class="field-group">
                 <label class="field-label" for="speed">سرعة الاتصال</label>
                 <div class="select-wrap">
-                  <select onchange="doLogi();" id="speed" name="domain" class="select">
+                  <select onchange="doLogi();" id="speed" name="domain" class="select" aria-describedby="speedStatus">
                     <optgroup label="يمكنك تغيير السرعة بشكل طبيعي حتى بعد تسجيل الدخول">
                       <option value="" enable-hot-blocker>إضغط هنا لتحديد سرعة</option>
                       <option value="1024K/2048k">سرعة توفير 2 ميجا</option>
@@ -83,8 +84,9 @@
                 <label class="field-label" for="cardInput">رقم الكرت</label>
                 <div class="input-shell login-field">
                   <span class="input-symbol" aria-hidden="true">▦</span>
-                  <input id="cardInput" class="login-input" name="username" type="text" value="" placeholder="أدخل رقم الكرت هنا" required autocomplete="off" inputmode="numeric" username-field rm-white-spaces improve-input to-arabic-numbers>
+                  <input id="cardInput" class="login-input" name="username" type="text" value="" placeholder="أدخل رقم الكرت هنا" required autocomplete="off" inputmode="numeric" aria-describedby="cardInputHelp" username-field rm-white-spaces improve-input to-arabic-numbers>
                 </div>
+                <span class="field-hint" id="cardInputHelp">اكتب رقم الكرت كما يظهر على البطاقة.</span>
               </div>
 
               <input name="password" type="hidden" placeholder="كلمة المرور" password-field>
@@ -113,10 +115,10 @@
                   <h3>تفضيل ترشيد البيانات</h3>
                   <p>هذا تفضيل محلي لهذه البوابة فقط؛ لا يوقف تحديثات الهاتف أو الكمبيوتر ولا يتحكم في تطبيقات المزامنة.</p>
                   <div class="toggle-line">
-                    <span class="toggle-caption">أرغب بتذكير نفسي بترشيد الاستهلاك</span>
+                    <label class="toggle-caption" for="remember">أرغب بتذكير نفسي بترشيد الاستهلاك</label>
                     <div id="toggles">
-                      <input type="checkbox" name="checkbox1" id="remember" class="ios-toggle" value="choose-auto-update-off">
-                      <label for="remember" class="checkbox-label" data-off="التذكير متوقف" data-on="التذكير مفعّل"></label>
+                      <input type="checkbox" name="checkbox1" id="remember" class="ios-toggle" value="choose-auto-update-off" aria-describedby="reminderPreferenceStatus">
+                      <label for="remember" class="checkbox-label" aria-hidden="true" data-off="التذكير متوقف" data-on="التذكير مفعّل"></label>
                     </div>
                   </div>
                   <span id="reminderPreferenceStatus" class="preference-status" role="status" aria-live="polite"></span>
@@ -144,7 +146,7 @@
         <section class="app glass-panel" id="price" aria-labelledby="priceTitle">
           <header class="panel-header"><span class="panel-icon" aria-hidden="true">◇</span><div><span class="eyebrow">اختر ما يناسبك</span><h2 class="title" id="priceTitle">أسعار الباقات</h2></div></header>
           <p class="panel-intro">تفاصيل الفئات والوقت والرصيد والصلاحية.</p>
-          <div class="table-wrap">
+          <div class="table-wrap" role="region" aria-label="جدول أسعار الباقات، يمكن تمريره أفقياً على الشاشات الصغيرة" tabindex="0">
             <table>
               <thead><tr><th scope="col">الفئة</th><th scope="col">الوقت</th><th scope="col">الرصيد</th><th scope="col">الصلاحية</th></tr></thead>
               <tbody>
@@ -202,7 +204,7 @@
 
         <section class="app glass-panel" id="block" aria-labelledby="blockTitle">
           <header class="panel-header"><span class="panel-icon block-icon" aria-hidden="true">!</span><div><span class="eyebrow">تنبيه أمني</span><h2 class="title" id="blockTitle">تم إيقاف المحاولات مؤقتاً</h2></div></header>
-          <div class="empty-state block-state"><span class="empty-orbit" aria-hidden="true">⌁</span><h3>انت محظور مؤقتاً</h3><p class="contact-text">لقد تم حظرك بسبب محاولات تسجيل الدخول الكثيرة الخاطئة.</p><div class="countdown-card"><span>بقي على فك الحظر</span><strong count-down-span>—</strong></div></div>
+          <div class="empty-state block-state"><span class="empty-orbit" aria-hidden="true">⌁</span><h3>انت محظور مؤقتاً</h3><p class="contact-text">لقد تم حظرك بسبب محاولات تسجيل الدخول الكثيرة الخاطئة.</p><div class="countdown-card"><span>بقي على فك الحظر</span><strong count-down-span aria-live="off">—</strong></div></div>
           <div class="bottom-info" aria-hidden="true"></div>
         </section>
       </div>
@@ -218,18 +220,52 @@
   <script src="js/main.min.js" link-login-only="http://a.net/login"></script>
   <script>
     (function () {
-      function illuminateGlass(event) {
-        var surface = event.target && event.target.closest ? event.target.closest(".glass-panel, .box") : null;
+      var supportsFinePointer = window.matchMedia &&
+        window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      var prefersReducedMotion = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var latestPoint = null;
+      var frameQueued = false;
+
+      function paintReflection() {
+        frameQueued = false;
+        if (!latestPoint) return;
+
+        var point = latestPoint;
+        latestPoint = null;
+        var surface = point.target && point.target.closest
+          ? point.target.closest(".glass-panel, .box")
+          : null;
+
         if (!surface) return;
         var bounds = surface.getBoundingClientRect();
         if (!bounds.width || !bounds.height) return;
-        var x = Math.max(0, Math.min(100, ((event.clientX - bounds.left) / bounds.width) * 100));
-        var y = Math.max(0, Math.min(100, ((event.clientY - bounds.top) / bounds.height) * 100));
+
+        var x = Math.max(0, Math.min(100, ((point.x - bounds.left) / bounds.width) * 100));
+        var y = Math.max(0, Math.min(100, ((point.y - bounds.top) / bounds.height) * 100));
         surface.style.setProperty("--pointer-x", x + "%");
         surface.style.setProperty("--pointer-y", y + "%");
       }
-      document.addEventListener("pointermove", illuminateGlass, { passive: true });
-      document.addEventListener("pointerdown", illuminateGlass, { passive: true });
+
+      function queueReflection(event) {
+        if (event.pointerType === "touch") return;
+        latestPoint = { target: event.target, x: event.clientX, y: event.clientY };
+        if (frameQueued) return;
+
+        frameQueued = true;
+        if (typeof window.requestAnimationFrame === "function") {
+          window.requestAnimationFrame(paintReflection);
+        } else {
+          window.setTimeout(paintReflection, 16);
+        }
+      }
+
+      if (!prefersReducedMotion) {
+        if (supportsFinePointer) {
+          document.addEventListener("pointermove", queueReflection, { passive: true });
+        }
+        document.addEventListener("pointerdown", queueReflection, { passive: true });
+      }
     })();
   </script>
 </body>

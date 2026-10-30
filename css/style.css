@@ -357,3 +357,419 @@ body > div[style*="backdrop-filter"] h6 { color: var(--muted) !important; }
 }
 .swal-actions .swal-button { margin: 12px 0 0; }
 .swal-box:focus { outline: none; }
+
+
+/* Stage 4 — accessibility, responsive layout, and rendering-cost refinements. */
+:root {
+  --subtle: rgba(238, 230, 250, .72);
+  --muted: rgba(240, 232, 251, .82);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.65;
+}
+
+.ambient-light {
+  width: 28rem;
+  height: 28rem;
+  filter: blur(62px);
+  opacity: .16;
+  animation: none;
+}
+
+.ambient-two,
+.ambient-three {
+  animation: none;
+}
+
+.box {
+  animation: none;
+}
+
+.glass-panel {
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+}
+
+.nav-card {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.portal-footer {
+  color: rgba(235, 225, 248, .7);
+}
+
+.nav-card small,
+.contact-action small,
+.field-hint,
+.feature-description,
+.feature-pills span,
+.brand-copy p,
+.online-indicator,
+.setting-label,
+.select-box > span,
+.brand-kicker,
+.eyebrow,
+.data span,
+.service-number {
+  font-size: 11px;
+}
+
+.preference-status,
+.setting-note {
+  font-size: 11px;
+}
+
+.login-input::placeholder {
+  color: rgba(239, 231, 250, .68);
+}
+
+.select2 {
+  min-height: 44px;
+}
+
+.table-wrap {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-margin-block: 16px;
+}
+
+.toggle-caption {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  line-height: 1.6;
+}
+
+#toggles {
+  width: 62px;
+  min-width: 62px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  width: 58px;
+  height: 44px;
+  flex: 0 0 58px;
+}
+
+.checkbox-label::before {
+  top: 8px;
+  right: 3px;
+  width: 26px;
+  height: 26px;
+}
+
+.ios-toggle:checked + .checkbox-label::before {
+  transform: translateX(-26px);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10001;
+  top: 12px;
+  right: 12px;
+  padding: 12px 18px;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 12px;
+  background: #4b2479;
+  box-shadow: 0 8px 25px rgba(0,0,0,.35);
+  transform: translateY(calc(-100% - 18px));
+  transition: transform .18s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #9beaf4;
+  outline-offset: 3px;
+}
+
+.ios-toggle:focus-visible + .checkbox-label {
+  outline: 3px solid #9beaf4;
+  outline-offset: 4px;
+}
+
+#portalMain:focus,
+.panel-header h2:focus {
+  outline: 3px solid #9beaf4;
+  outline-offset: 5px;
+  border-radius: 5px;
+}
+
+@supports (min-height: 100svh) {
+  .screen {
+    min-height: calc(100svh - 68px);
+  }
+}
+
+@media (min-width: 900px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ambient-one {
+    animation: ambient-drift 34s ease-in-out infinite alternate;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: min(100% - 24px, 620px);
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(15px) saturate(140%);
+    -webkit-backdrop-filter: blur(15px) saturate(140%);
+  }
+
+  .nav-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .ambient-light {
+    width: 21rem;
+    height: 21rem;
+    filter: blur(48px);
+    opacity: .12;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    width: min(100% - 20px, 620px);
+  }
+
+  .screen {
+    min-height: calc(100vh - 40px);
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(12px) saturate(135%);
+    -webkit-backdrop-filter: blur(12px) saturate(135%);
+  }
+
+  .nav-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .feature-pills span {
+    padding: 6px 9px;
+  }
+
+  .contact-action {
+    min-height: 58px;
+  }
+
+  .portal-footer {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    width: calc(100% - 16px);
+  }
+
+  .brand-header {
+    gap: 9px;
+    padding-inline: 6px;
+  }
+
+  .brand-copy h1 {
+    font-size: 20px;
+  }
+
+  .brand-kicker {
+    font-size: 9px;
+    letter-spacing: .08em;
+  }
+
+  .login-form {
+    padding-inline: 13px;
+  }
+
+  .portal-nav {
+    gap: 5px;
+  }
+
+  .nav-card {
+    min-height: 88px;
+  }
+
+  .nav-card small {
+    display: none;
+  }
+
+  .setting-row {
+    min-width: 0;
+  }
+}
+
+@media (max-height: 540px) and (orientation: landscape) {
+  .container {
+    margin-block: 12px;
+  }
+
+  .brand-header {
+    min-height: 96px;
+    padding-block: 12px;
+  }
+
+  .brand-mark {
+    width: 54px;
+    height: 54px;
+    flex-basis: 54px;
+    border-radius: 17px;
+    font-size: 31px;
+  }
+
+  .box {
+    min-height: 116px;
+  }
+}
+
+@media (hover: none) {
+  .glass-panel::after {
+    display: none;
+  }
+
+  .nav-card:hover,
+  .contact-action:hover,
+  .login-submit:hover,
+  .app-submit:hover {
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-panel,
+  .box,
+  .nav-card,
+  .contact-action {
+    background: rgba(24, 14, 42, .96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .ambient-light,
+  .glass-panel::after,
+  .box::before {
+    display: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --muted: #f4edff;
+    --subtle: #e7dbf8;
+    --line: rgba(255,255,255,.6);
+  }
+
+  .glass-panel,
+  .box,
+  .nav-card,
+  .contact-action,
+  .input-shell,
+  .select,
+  #se,
+  .select2 {
+    border-color: rgba(255,255,255,.62);
+  }
+
+  .portal-footer {
+    color: #f4edff;
+  }
+}
+
+@media (forced-colors: active) {
+  .glass-panel,
+  .box,
+  .nav-card,
+  .contact-action,
+  .input-shell,
+  .select,
+  #se,
+  .select2,
+  .login-submit,
+  .app-submit {
+    color: CanvasText;
+    background: Canvas;
+    border: 1px solid ButtonText;
+    box-shadow: none;
+    forced-color-adjust: auto;
+  }
+
+  .brand-mark,
+  .heading-icon,
+  .panel-icon,
+  .success-mark,
+  .note-icon,
+  .nav-icon {
+    color: CanvasText;
+    background: Canvas;
+    border: 1px solid ButtonText;
+    box-shadow: none;
+  }
+
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible,
+  .ios-toggle:focus-visible + .checkbox-label {
+    outline: 3px solid Highlight;
+  }
+
+  .ambient-light,
+  .feature-orbit,
+  .glass-panel::before,
+  .glass-panel::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-light,
+  .box,
+  .glass-panel::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .skip-link {
+    transition: none;
+  }
+}
+
+/* Keep compact Arabic helper copy legible at narrow widths. */
+.login-links p,
+.nav-card > span:nth-child(2) {
+  font-size: 11px;
+}
+
+.alert-box button,
+.swal-button,
+.skip-link {
+  min-height: 44px;
+}
+
+@media (max-width: 540px) {
+  .nav-card > span:nth-child(2) {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-card > span:nth-child(2) {
+    font-size: 11px;
+  }
+}

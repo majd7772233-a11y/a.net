@@ -106,6 +106,32 @@ Completed in js/scripts.js, with truthful-copy/control-state updates in index-2.
 - CSS brace-balance check: passed.
 - These are source-level and fake-DOM checks. No real-browser rendering or live-router test was available.
 
+## Stage 4 — Accessibility, Responsive and Performance Hardening
+
+Implemented on the same feature branch:
+- Added a visible-on-focus skip link to the main content and made the main landmark a programmatic focus target.
+- Added an accessible name to the login form, a descriptive help text for the card number input, and a described-by relationship for the speed selector.
+- Added a real text label for the data-usage preference checkbox; the decorative switch track is hidden from assistive technology while retaining click behavior.
+- Made the pricing table wrapper a named, keyboard-focusable scroll region for narrow-screen horizontal scrolling.
+- Marked the one-second block countdown as aria-live="off" to avoid constant unsolicited screen-reader announcements.
+- Added shared focus-visible outlines for links, buttons, form controls and programmatically focused content. Focus moves to the heading when an information/status/block panel opens and returns to the card-number field when navigating back to login.
+- Raised small helper text and footer contrast, and increased compact switch/select/alert/skip-link targets to at least 44 CSS pixels where relevant.
+- Added responsive handling for narrow phones, small screens, landscape/short viewports, touch-first devices, and modern small-viewport units. Existing table horizontal scrolling is preserved.
+- Added more-contrast, forced-colors, reduced-transparency, and reduced-motion treatments plus a no-backdrop-filter fallback.
+- Reduced expensive blur strengths on mobile, disabled hover-only glass reflections on touch devices, limited pointer effects to fine-pointer devices, throttled pointer updates to requestAnimationFrame, and disabled pointer-following effects when reduced motion is requested.
+- Limited ambient movement to larger fine-pointer screens; removed the old breathing animation from the promo surface.
+- No network/router code, API paths, speed values, prices, or protected integration files were modified.
+
+### Stage 4 Validation Record
+- HTML structural nesting: passed; duplicate IDs: zero; required DOM IDs/attributes: all present.
+- Form/checkbox/control labeling, skip-link destination, keyboard-focusable price-table region, and live-region behavior: source checks passed.
+- JavaScript syntax: passed for scripts.js and the inline pointer-lighting script.
+- UI behavior harness: 14 of 14 checks passed, including focus transfer to panel headings and focus restoration to the card field.
+- Pointer-lighting harness: 4 of 4 checks passed (fine-pointer listener, one animation-frame update for burst input, latest pointer coordinates, and ignoring touch pointermove).
+- CSS brace balance: passed. Presence of focus, touch, landscape, reduced-motion, reduced-transparency, higher-contrast, forced-colors, and mobile blur-fallback rules: verified.
+- Sampled foreground contrast calculations against the dark surface exceeded 4.5:1 (the lowest sampled value was 7.02:1); these calculations are not a full palette/element WCAG audit.
+- No browser visual preview or real-router test was available; responsive rendering and deployed connectivity still require Stage 5 checks on actual runtime/browser/network.
+
 ## Runtime and Deployment Limits
 - No router/server source or live hotspot was provided.
 - Do not claim that login, logout, status polling, speed changes, saved cards, or block countdown have been verified in production until tested on the actual Al-Ghaith Net network.
@@ -114,4 +140,4 @@ Completed in js/scripts.js, with truthful-copy/control-state updates in index-2.
 - Keep main untouched.
 
 ## Next Action
-Read this file and ROADMAP.md again before starting Stage 4 — Accessibility, Responsive and Performance Hardening. Stage 3 is closed; do not revisit protected router integration unless the network owner supplies its documented contract.
+Read this file and ROADMAP.md again before starting Stage 5 — Regression Verification and Handoff. Stage 4 is closed at source-check level; browser and live-network checks remain explicit Stage 5 work.

@@ -391,6 +391,58 @@
     if (login) observer.observe(login, { attributes: true, attributeFilter: ["class", "style"] });
   }
 
+  function moveFocusTo(element) {
+    if (!element || typeof element.focus !== "function") return;
+
+    if (typeof element.setAttribute === "function") {
+      element.setAttribute("tabindex", "-1");
+    }
+
+    try {
+      element.focus({ preventScroll: true });
+    } catch (error) {
+      element.focus();
+    }
+  }
+
+  function observePanelFocus() {
+    if (typeof window.MutationObserver !== "function") return;
+
+    var loginPanel = document.querySelector(".login");
+    var panels = document.querySelectorAll(".app");
+    var observer = new window.MutationObserver(function (records) {
+      for (var i = 0; i < records.length; i += 1) {
+        var panel = records[i].target;
+
+        if (panel.classList && panel.classList.contains("app") &&
+            panel.classList.contains("active")) {
+          moveFocusTo(panel.querySelector(".panel-header h2"));
+          continue;
+        }
+
+        if (panel === loginPanel && panel.classList &&
+            !panel.classList.contains("inactive") &&
+            panel.style.display !== "none") {
+          moveFocusTo(getElement("cardInput"));
+        }
+      }
+    });
+
+    if (loginPanel) {
+      observer.observe(loginPanel, {
+        attributes: true,
+        attributeFilter: ["class", "style"]
+      });
+    }
+
+    for (var j = 0; j < panels.length; j += 1) {
+      observer.observe(panels[j], {
+        attributes: true,
+        attributeFilter: ["class", "style"]
+      });
+    }
+  }
+
   function syncSavedCardSpeed() {
     var savedCards = getElement("se");
     var speedSelect = getElement("speed");
@@ -476,6 +528,7 @@
 
     attachLoginLoading();
     observeLoginResult();
+    observePanelFocus();
     checkFridayBlessing();
   }
 

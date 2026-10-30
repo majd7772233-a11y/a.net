@@ -97,7 +97,25 @@ Completed:
 - No live browser or router test was available; production connectivity remains unverified.
 
 ## Stage 4 — Accessibility, Responsive and Performance Hardening
-Not started. Verify keyboard/touch behavior, labels/ARIA, contrast, touch target sizing, reduced motion, blur fallback, low-power effect cost, and dependency-free delivery. Acceptance: usable on phone/tablet/desktop, including without backdrop-filter.
+Implemented:
+- Added a skip link to the main landmark, a name and help description for the login form/card field, and a text label for the local data-usage preference control.
+- Added a keyboard-focusable, named price-table scroll region; set the per-second block countdown to aria-live="off".
+- Added consistent focus-visible styling and programmatic focus management across panel navigation. Opening a panel focuses its heading; returning to login focuses the card field.
+- Raised helper-text legibility and contrast; increased compact switches, selects, alert buttons, and the skip link to 44 CSS-pixel targets where appropriate.
+- Added narrow-phone, small viewport, landscape, touch, forced-colors, higher-contrast, reduced-transparency, and reduced-motion handling.
+- Reduced blur and animations on mobile/low-power contexts; hover reflections are disabled for touch devices. Pointer reflections now use requestAnimationFrame, are limited to fine-pointer devices, ignore touch pointermove, and stop when reduced motion is preferred.
+- Added explicit focus, no-backdrop-filter, and system-color fallbacks. No external dependencies were introduced.
+- No router/network files or integration contract values were modified.
+
+### Stage 4 Validation
+- HTML nesting: passed; duplicate IDs: zero; required hook IDs/attributes: present.
+- Form and checkbox labels, helper descriptions, skip-link destination, table scroll region, and countdown live-region behavior: checked at source level.
+- scripts.js and inline pointer script syntax: passed.
+- UI behavior harness: 14/14 passed, including keyboard focus transition to panel headings and back to the card field.
+- Pointer behavior harness: 4/4 passed for frame throttling, latest-coordinate handling, fine-pointer behavior, and ignoring touch movement.
+- CSS brace balance and presence of required accessibility/responsive/performance media rules: passed.
+- Sampled text color contrast calculations: lowest sampled value 7.02:1 against the dark background; not a full element-by-element WCAG audit.
+- No actual browser visual test or live-router test was available; those checks are deferred to Stage 5.
 
 ## Stage 5 — Regression Verification and Handoff
 Not started. Run formal HTML/CSS/JS validation where tooling is available, verify local assets, selectors and protected files, test in browser where available, and perform login/saved-card/block/status/logout/speed checks on the actual network when possible. Record precise limitations and deployment/rollback steps.
@@ -111,4 +129,4 @@ Not started. Run formal HTML/CSS/JS validation where tooling is available, verif
 6. Keep main unchanged; use the feature branch.
 
 ## Current Progress
-Stages 1, 2, and 3 are complete on redesign/liquid-glass-ui. main remains untouched. Next stage: Stage 4 — Accessibility, Responsive and Performance Hardening.
+Stages 1, 2, 3, and 4 are complete at source-check level on redesign/liquid-glass-ui. main remains untouched. Next stage: Stage 5 — Regression Verification and Handoff.
