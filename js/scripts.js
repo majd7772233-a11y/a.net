@@ -2,6 +2,15 @@
 (function (window, document) {
   "use strict";
 
+  /* Capture helpers exported by hotBlocker/hotCookie before main.min.js
+     declares same-named globals later in the page. */
+  var originalCookieReader = typeof window.getCookieOrNull === "function"
+    ? window.getCookieOrNull
+    : null;
+  var originalClearCookies = typeof window.clearCookies === "function"
+    ? window.clearCookies
+    : null;
+
   var STORAGE_KEYS = {
     reminder: "dataUsageReminder",
     legacyReminder: ["updatesDisabled", "autoUpdateState", "autoUpdateSetting"],
@@ -431,6 +440,8 @@
        no-op hideLoadingIndicator. Rebind this UI-only function after parsing. */
     window.doLogi = doLogi;
     window.checkSpeed = checkSpeed;
+    if (originalCookieReader) window.getCookieOrNull = originalCookieReader;
+    if (originalClearCookies) window.clearCookies = originalClearCookies;
     window.updateSpeedStatus = updateSpeedStatus;
     window.swal = swal;
     window.showLoadingIndicator = showLoadingIndicator;

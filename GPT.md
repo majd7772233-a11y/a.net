@@ -37,7 +37,7 @@ The following integration and support files remain byte-for-byte unchanged from 
 - js/hotInImprover.min.js — blob SHA ebeeea10d1567c2bf5f91b8e92a6e2d7f3631f89.
 - js/myfile.min.js — blob SHA 741118e8eb41b75b783c04ec43453d167e8c3fb5.
 
-js/scripts.js is the only behavior script changed in Stage 3. It contains local UI state and presentation logic only; its current blob SHA is 3b1a52216b9d27eb798cf88c8f11185e5d85fbee. It must not gain router requests, API calls, authentication, cookie, or session behavior.
+js/scripts.js is the only behavior script changed in Stage 3. It contains local UI state and presentation logic only; its current blob SHA is ac7d8c72ef65aced4b742b68e919d9c95e87fc3e. It must not gain router requests, API calls, authentication, cookie, or session behavior.
 
 Preserve:
 - getRequest() and its current XMLHttpRequest behavior, including t.open("GET.html", e, !0).
@@ -91,17 +91,18 @@ Completed in js/scripts.js, with truthful-copy/control-state updates in index-2.
 - Corrected speed warnings to match the existing 8-megabit and 64-megabit profiles. Invalid old profile comparisons were removed.
 - Replaced the old modal with one accessible dialog implementation: semantic dialog labeling, focus management/restoration, Escape and outside-click closing, and working optional report callback.
 - Added the login loading state before the existing click handler runs, prevents duplicate loading intervals, sets/removes aria-busy, and clears the loader on existing callback paths. The local hide function is rebound after main.min.js loads so its legacy no-op does not override the indicator.
+- Captured and restored the original getCookieOrNull and clearCookies helpers exported by hotBlocker.min.js and hotCookie.min.js because main.min.js shadows those names with replacement globals. The original implementations themselves remain unchanged; restoring the references preserves existing blocker and saved-card clearing behavior.
 - Removed the obsolete click-to-pause handler for the former 3D image carousel.
 - The old speedChange markup called changeSpeed(), a function absent from every repository script. Rather than invent a router operation, the in-session selector is visibly disabled with an explanation; its original four profile values remain present. A real speed-change operation requires the network owner's documented integration flow and is not claimed as implemented.
 - Friday greeting is shown at most once per local date.
 
 ### Stage 3 Validation Record
 - JavaScript syntax parse using the JavaScript runtime: passed.
-- Fake-DOM behavior harness: 13 checks passed, covering legacy preference migration, toggle/selector synchronization, speed restoration and persistence, high-speed warning, loader start/stop and timer cleanup, accessible modal, report callback, and Escape dismissal.
+- Fake-DOM behavior harness: 15 checks passed, covering legacy preference migration, toggle/selector synchronization, speed restoration and persistence, high-speed warning, loader start/stop and timer cleanup, accessible modal, report callback, Escape dismissal, and restoration of the original cookie/blocker helper functions.
 - HTML nesting: passed; duplicate IDs: zero; required DOM IDs/attributes: present.
 - Six price rows and all four original speed values: preserved.
 - Script order preserved; no new network/API calls or request paths in scripts.js.
-- main.min.js, hotCookie.min.js, hotBlocker.min.js, hotInImprover.min.js, and myfile.min.js compared byte-for-byte with main: unchanged.
+- main.min.js, hotCookie.min.js, hotBlocker.min.js, hotInImprover.min.js, and myfile.min.js compared byte-for-byte with main: unchanged. The original global helper functions were restored by reference at UI initialization; their source files were not edited.
 - CSS brace-balance check: passed.
 - These are source-level and fake-DOM checks. No real-browser rendering or live-router test was available.
 

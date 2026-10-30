@@ -27,7 +27,7 @@ Do not modify server/router communication or the business logic in protected JS:
 - js/hotCookie.min.js — unchanged; saved-card and cookie semantics.
 - js/hotBlocker.min.js — unchanged; retry counter, block time, countdown.
 - js/hotInImprover.min.js — unchanged; input normalization.
-- js/scripts.js has now been modified in Stage 3 for local UI behavior only. It must not contain router/API calls. Current blob SHA: 3b1a52216b9d27eb798cf88c8f11185e5d85fbee.
+- js/scripts.js has now been modified in Stage 3 for local UI behavior only. It must not contain router/API calls. Current blob SHA: ac7d8c72ef65aced4b742b68e919d9c95e87fc3e.
 - js/myfile.min.js remains unchanged.
 - Preserve main.min.js attribute link-login-only="http://a.net/login".
 - Preserve form name login, username/password names, all custom input attributes, cookie/blocker attributes, selectors, and script order.
@@ -80,18 +80,19 @@ Completed:
 - Fixed warnings to match the actual available 8 Mbps and 64 Mbps profiles.
 - Rebuilt the local alert as an accessible dialog with focus handling, Escape/outside closing, and a functioning optional report callback.
 - Connected the login loading indicator to the existing submit button without changing its request handler; interval cleanup and aria-busy are handled locally.
+- Restored the original cookie reader and cookie-clear helpers at initialization because main.min.js otherwise shadows the implementations exported earlier by hotBlocker.min.js and hotCookie.min.js. The protected source files remain untouched.
 - Removed the obsolete image-carousel click-to-pause handler.
 - The speedChange UI referenced a nonexistent changeSpeed(). Its selector is disabled with an explicit explanation while preserving all four existing values. No network operation was invented.
 - Friday greeting is limited to once per local date.
 
 ### Stage 3 Validation
 - JavaScript syntax parse: passed.
-- Fake-DOM behavior harness: 13 checks passed for preference migration/synchronization, speed restore/persistence/warnings, loading lifecycle, accessible modal, report callback, and Escape dismissal.
+- Fake-DOM behavior harness: 15 checks passed for preference migration/synchronization, speed restore/persistence/warnings, loading lifecycle, accessible modal, report callback, Escape dismissal, and restoration of the original cookie/blocker helpers.
 - HTML nesting and unique IDs: passed.
 - Required hook IDs/attributes and script load order: preserved.
 - Six original price rows and four speed values: preserved.
 - No request/API code was added to scripts.js.
-- main.min.js, hotCookie.min.js, hotBlocker.min.js, hotInImprover.min.js, and myfile.min.js remain byte-identical to main.
+- main.min.js, hotCookie.min.js, hotBlocker.min.js, hotInImprover.min.js, and myfile.min.js remain byte-identical to main; only their already-exported helper references are restored by the local UI initializer.
 - CSS brace-balance check: passed.
 - No live browser or router test was available; production connectivity remains unverified.
 
