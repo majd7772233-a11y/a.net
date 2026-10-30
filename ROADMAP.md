@@ -27,7 +27,8 @@ Do not modify server/router communication or the business logic in protected JS:
 - js/hotCookie.min.js — unchanged; saved-card and cookie semantics.
 - js/hotBlocker.min.js — unchanged; retry counter, block time, countdown.
 - js/hotInImprover.min.js — unchanged; input normalization.
-- Also unchanged in this stage: js/scripts.js and js/myfile.min.js.
+- js/scripts.js has now been modified in Stage 3 for local UI behavior only. It must not contain router/API calls. Current blob SHA: 3b1a52216b9d27eb798cf88c8f11185e5d85fbee.
+- js/myfile.min.js remains unchanged.
 - Preserve main.min.js attribute link-login-only="http://a.net/login".
 - Preserve form name login, username/password names, all custom input attributes, cookie/blocker attributes, selectors, and script order.
 - Preserve exact speed profiles: 1024K/2048k, 2048K/4096k, 4096K/8192k, 64M/64M.
@@ -43,7 +44,7 @@ Do not modify server/router communication or the business logic in protected JS:
 - Current offer state remains: no offers at this time.
 - Several image paths were 109-byte HTML 404 content, not image files. The redesigned page no longer references them.
 - Original HTML had duplicate id, invalid contact anchor, stray closing tags, and malformed table rows.
-- scripts.js retains known legacy UI assumptions and duplicate window.onload handlers; these are reserved for Stage 3.
+- scripts.js retained legacy duplicate initialization and misleading update-control text; these are now addressed in Stage 3.
 - main.min.js combines hotspot integration and panel behavior, so it remains fully untouched.
 
 ## Stage 1 — Safe Baseline and Engineering Memory
@@ -58,7 +59,7 @@ Completed on redesign/liquid-glass-ui:
 - Replaced broken image-carousel paths with a local CSS feature panel; no image or external asset dependency remains in the new portal markup.
 - Preserved price details, phone numbers, sales point wording, and the no-current-offers message.
 - Retained the legacy DOM contract and script loading order.
-- Left all JavaScript files unchanged.
+- Left all JavaScript files unchanged in Stage 2.
 
 ### Stage 2 Validation Record
 - HTML structural nesting: passed (zero mismatched/unclosed tags).
@@ -71,7 +72,28 @@ Completed on redesign/liquid-glass-ui:
 - No full browser/standards validation and no live-router test were available. Therefore real login/logout/session compatibility remains unclaimed.
 
 ## Stage 3 — Safe Client-Side UI Repairs
-Not started. Inspect non-network UI logic and callers. Address duplicate initialization, missing-element assumptions, status/speed labels, local preference behavior, alerts, loading indicators, and UI transitions. Correct any claim that settings disable operating-system or app updates when no real control mechanism exists. Do not alter network requests, saved-card semantics, blocker behavior, or speed profiles. Acceptance requires meaningful behavior checks and a proof that protected JS/network contract is unchanged.
+Completed:
+- Consolidated local UI startup into one guarded DOMContentLoaded initializer; removed multiple window.onload overwrites, duplicate speed listeners, conflicting preference handlers, and unsafe direct element assumptions.
+- Added defensive localStorage access, unified the data-usage preference under dataUsageReminder, and migrated old local keys without changing cookies or router state.
+- Synchronized the login toggle and status-page selector. Rewrote the copy to clarify this is only a local preference and cannot turn off operating-system updates or app synchronization.
+- Fixed speed-label restoration and persistence to use exact existing profile values; legacy stored option labels are migrated. Saved-card selection refreshes local speed UI only.
+- Fixed warnings to match the actual available 8 Mbps and 64 Mbps profiles.
+- Rebuilt the local alert as an accessible dialog with focus handling, Escape/outside closing, and a functioning optional report callback.
+- Connected the login loading indicator to the existing submit button without changing its request handler; interval cleanup and aria-busy are handled locally.
+- Removed the obsolete image-carousel click-to-pause handler.
+- The speedChange UI referenced a nonexistent changeSpeed(). Its selector is disabled with an explicit explanation while preserving all four existing values. No network operation was invented.
+- Friday greeting is limited to once per local date.
+
+### Stage 3 Validation
+- JavaScript syntax parse: passed.
+- Fake-DOM behavior harness: 13 checks passed for preference migration/synchronization, speed restore/persistence/warnings, loading lifecycle, accessible modal, report callback, and Escape dismissal.
+- HTML nesting and unique IDs: passed.
+- Required hook IDs/attributes and script load order: preserved.
+- Six original price rows and four speed values: preserved.
+- No request/API code was added to scripts.js.
+- main.min.js, hotCookie.min.js, hotBlocker.min.js, hotInImprover.min.js, and myfile.min.js remain byte-identical to main.
+- CSS brace-balance check: passed.
+- No live browser or router test was available; production connectivity remains unverified.
 
 ## Stage 4 — Accessibility, Responsive and Performance Hardening
 Not started. Verify keyboard/touch behavior, labels/ARIA, contrast, touch target sizing, reduced motion, blur fallback, low-power effect cost, and dependency-free delivery. Acceptance: usable on phone/tablet/desktop, including without backdrop-filter.
@@ -86,3 +108,6 @@ Not started. Run formal HTML/CSS/JS validation where tooling is available, verif
 4. Preserve all integration DOM hooks and script configuration.
 5. No fake login or demo success replacing real hotspot behavior.
 6. Keep main unchanged; use the feature branch.
+
+## Current Progress
+Stages 1, 2, and 3 are complete on redesign/liquid-glass-ui. main remains untouched. Next stage: Stage 4 — Accessibility, Responsive and Performance Hardening.

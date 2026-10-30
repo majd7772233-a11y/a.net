@@ -30,13 +30,14 @@ Repository: majd7772233-a11y/a.net. Product: Arabic captive portal for Al-Ghaith
 - GET.html is a 109-byte HTML 404 response and is not an image.
 
 ## Protected Integration Contract
-The following files have not been modified:
+The following integration and support files remain byte-for-byte unchanged from main:
 - js/main.min.js — blob SHA 2d794af9eaf4f833c3b2bb6e25540f6d7d867cc0.
 - js/hotCookie.min.js — blob SHA d3dda4ded7d1c4d50478067280280f7a9a51fd13.
 - js/hotBlocker.min.js — blob SHA ed181b0eadbe0f792bc222dc40b8ed0e34e05b6a.
 - js/hotInImprover.min.js — blob SHA ebeeea10d1567c2bf5f91b8e92a6e2d7f3631f89.
-- js/scripts.js — blob SHA a2dbf382eff02164f90290feddd2c97414a1f020.
 - js/myfile.min.js — blob SHA 741118e8eb41b75b783c04ec43453d167e8c3fb5.
+
+js/scripts.js is the only behavior script changed in Stage 3. It contains local UI state and presentation logic only; its current blob SHA is 3b1a52216b9d27eb798cf88c8f11185e5d85fbee. It must not gain router requests, API calls, authentication, cookie, or session behavior.
 
 Preserve:
 - getRequest() and its current XMLHttpRequest behavior, including t.open("GET.html", e, !0).
@@ -56,9 +57,9 @@ Preserve:
 Completed. Baseline, original integration contract, repository structure, and phased roadmap were recorded on the feature branch.
 
 ## Stage 2 — Complete Visual System and Portal Redesign
-Implemented on redesign/liquid-glass-ui:
+Completed on redesign/liquid-glass-ui:
 - Rebuilt index.html as an Arabic RTL redirect page with a manual fallback link.
-- Rebuilt index-2.html using semantic sections for the login area, saved-card selector, speed selection, prices, sales points, offers, connected state, usage, preferences, logout, contacts, and blocked state.
+- Rebuilt index-2.html using semantic sections for the login area, saved-card selector, speed selection, prices, sales points, offers, connected state, usage, preferences, logout, contacts, and temporary block state.
 - Preserved all required DOM hooks and existing form field names. Kept .box and #speedStatus because the existing scripts.js assumes they exist.
 - Removed sample card/usage figures and replaced them with neutral dashes until real status data arrives.
 - Rebuilt the pricing table with the original six price/time/quota/validity combinations.
@@ -67,7 +68,7 @@ Implemented on redesign/liquid-glass-ui:
 - Replaced css/style.css with a purple Deep / Pure Liquid Glass visual system: backdrop blur, translucent layered surfaces, asymmetric edge reflections, ambient purple/cyan light, soft movement, and pointer/touch-following highlights.
 - Replaced css/chik.css global reset/transition/outline suppression with a scoped keyboard-accessible toggle.
 - Added responsive rules, focus-visible styling, a backdrop-filter fallback, and reduced-motion behavior.
-- No application or network JavaScript file was changed.
+- No application or network JavaScript file was changed in this stage.
 
 ## Stage 2 Source-Level Validation
 - HTML tag nesting check: passed; no mismatched or unclosed tags.
@@ -78,22 +79,38 @@ Implemented on redesign/liquid-glass-ui:
 - Existing script loading order: preserved.
 - Image references to the known broken assets: none; image elements: zero.
 - CSS and toggle stylesheet brace balance: passed.
-- Protected JavaScript files: branch blob SHAs match main for all six listed files.
-- The checks above are source-level checks, not a full browser or live-network test. No HTML/CSS standards parser or visual browser runner was available through the GitHub connection.
+- Protected JavaScript files: branch blob SHAs matched main.
+- The checks above are source-level checks, not a full browser or live-network test.
 
-## Deferred Known UI Logic Work
-Stage 3 remains required:
-- scripts.js has multiple window.onload assignments and overlapping preference handlers.
-- The old speed label/update UI had missing-element assumptions; #speedStatus is now present, but behavior needs Stage 3 repair.
-- The existing update-preference toggle must not be represented as controlling operating-system/app updates unless a real mechanism exists.
-- Alert/loading timing and local preference state should be reviewed.
-Do not change hotspot requests, cookie semantics, or blocker logic while addressing these UI defects.
+## Stage 3 — Safe Client-Side UI Repairs
+Completed in js/scripts.js, with truthful-copy/control-state updates in index-2.html and matching presentation rules in css/style.css:
+- Replaced three competing window.onload assignments and duplicate event handlers with one guarded DOMContentLoaded initializer.
+- Made localStorage access defensive. Added one canonical dataUsageReminder preference and migration from former updatesDisabled, autoUpdateState, and autoUpdateSetting keys.
+- Synchronized the login-page toggle, status-page preference selector, status label, and explanatory text. The setting is explicitly a local preference only; it does not disable phone/PC updates or app synchronization.
+- Repaired speed-label restoration: the selected profile is stored by its exact existing value, legacy saved option labels are migrated, and the saved-card selector updates the local speed label without sending requests.
+- Corrected speed warnings to match the existing 8-megabit and 64-megabit profiles. Invalid old profile comparisons were removed.
+- Replaced the old modal with one accessible dialog implementation: semantic dialog labeling, focus management/restoration, Escape and outside-click closing, and working optional report callback.
+- Added the login loading state before the existing click handler runs, prevents duplicate loading intervals, sets/removes aria-busy, and clears the loader on existing callback paths. The local hide function is rebound after main.min.js loads so its legacy no-op does not override the indicator.
+- Removed the obsolete click-to-pause handler for the former 3D image carousel.
+- The old speedChange markup called changeSpeed(), a function absent from every repository script. Rather than invent a router operation, the in-session selector is visibly disabled with an explanation; its original four profile values remain present. A real speed-change operation requires the network owner's documented integration flow and is not claimed as implemented.
+- Friday greeting is shown at most once per local date.
+
+### Stage 3 Validation Record
+- JavaScript syntax parse using the JavaScript runtime: passed.
+- Fake-DOM behavior harness: 13 checks passed, covering legacy preference migration, toggle/selector synchronization, speed restoration and persistence, high-speed warning, loader start/stop and timer cleanup, accessible modal, report callback, and Escape dismissal.
+- HTML nesting: passed; duplicate IDs: zero; required DOM IDs/attributes: present.
+- Six price rows and all four original speed values: preserved.
+- Script order preserved; no new network/API calls or request paths in scripts.js.
+- main.min.js, hotCookie.min.js, hotBlocker.min.js, hotInImprover.min.js, and myfile.min.js compared byte-for-byte with main: unchanged.
+- CSS brace-balance check: passed.
+- These are source-level and fake-DOM checks. No real-browser rendering or live-router test was available.
 
 ## Runtime and Deployment Limits
 - No router/server source or live hotspot was provided.
 - Do not claim that login, logout, status polling, speed changes, saved cards, or block countdown have been verified in production until tested on the actual Al-Ghaith Net network.
+- No real-browser visual test was available through the connected repository environment.
 - Do not introduce a CDN, package manager, framework, external font, external image, or server dependency.
 - Keep main untouched.
 
 ## Next Action
-Read this file and ROADMAP.md again before starting Stage 3 — Safe Client-Side UI Repairs. Complete each stage before marking it finished.
+Read this file and ROADMAP.md again before starting Stage 4 — Accessibility, Responsive and Performance Hardening. Stage 3 is closed; do not revisit protected router integration unless the network owner supplies its documented contract.
