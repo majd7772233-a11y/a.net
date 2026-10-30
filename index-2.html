@@ -110,15 +110,16 @@
               <div class="login-links">
                 <div class="note-icon" aria-hidden="true">!</div>
                 <div class="note-copy">
-                  <h3>ملاحظة هامة</h3>
-                  <p>يمكنك التحكم في خيار التحديثات والمزامنة من المفتاح التالي. اختر الإعداد الذي يناسبك.</p>
+                  <h3>تفضيل ترشيد البيانات</h3>
+                  <p>هذا تفضيل محلي لهذه البوابة فقط؛ لا يوقف تحديثات الهاتف أو الكمبيوتر ولا يتحكم في تطبيقات المزامنة.</p>
                   <div class="toggle-line">
-                    <span class="toggle-caption">إعداد التحديثات</span>
+                    <span class="toggle-caption">أرغب بتذكير نفسي بترشيد الاستهلاك</span>
                     <div id="toggles">
                       <input type="checkbox" name="checkbox1" id="remember" class="ios-toggle" value="choose-auto-update-off">
-                      <label for="remember" class="checkbox-label" data-off="غير مفعّل" data-on="مفعّل"></label>
+                      <label for="remember" class="checkbox-label" data-off="التذكير متوقف" data-on="التذكير مفعّل"></label>
                     </div>
                   </div>
+                  <span id="reminderPreferenceStatus" class="preference-status" role="status" aria-live="polite"></span>
                 </div>
               </div>
             </form>
@@ -183,13 +184,14 @@
           </div>
           <div class="settings-card">
             <div class="setting-row">
-              <div><span class="setting-label">تحديثات الهاتف</span><strong id="updateStatus">—</strong></div>
-              <label class="select-box" for="remember-select"><span>تغيير الإعداد</span><select id="remember-select" class="select2"><option value="" disabled selected>تغيير التحديثات</option><option value="choose-auto-update-off">تعطيل التحديثات</option><option value="no">تفعيل التحديثات</option></select></label>
+              <div><span class="setting-label">تذكير استهلاك البيانات</span><strong id="updateStatus">—</strong></div>
+              <label class="select-box" for="remember-select"><span>تغيير الإعداد</span><select id="remember-select" class="select2"><option value="" disabled selected>إعداد التذكير</option><option value="choose-auto-update-off">تفعيل التفضيل</option><option value="no">إيقاف التفضيل</option></select></label>
             </div>
             <div class="setting-row">
               <div><span class="setting-label">السرعة التي اخترتها</span><strong id="sps">—</strong></div>
-              <label class="select-box" for="speedChange"><span>تغيير السرعة</span><select id="speedChange" class="select2" onchange="changeSpeed()"><option value="" selected hidden>تغيير السرعة</option><option value="1024K/2048k">سرعة توفير 2 ميجا</option><option value="2048K/4096k">سرعة متوسطة 4 ميجا</option><option value="4096K/8192k">سرعة عالية 8 ميجا</option><option value="64M/64M">سرعة عالية جدا</option></select></label>
+              <label class="select-box" for="speedChange"><span>خيارات السرعة المتاحة</span><select id="speedChange" class="select2" disabled aria-describedby="speedChangeHelp"><option value="" selected hidden>غير متاح أثناء الجلسة</option><option value="1024K/2048k">سرعة توفير 2 ميجا</option><option value="2048K/4096k">سرعة متوسطة 4 ميجا</option><option value="4096K/8192k">سرعة عالية 8 ميجا</option><option value="64M/64M">سرعة عالية جدا</option></select></label>
             </div>
+            <p id="speedChangeHelp" class="setting-note">تغيير سرعة الجلسة من هذه القائمة غير متاح في كود الواجهة الحالي؛ لذلك أُوقفت القائمة بدل عرض تغيير لا يُنفَّذ. لم يُرسل أي طلب للراوتر.</p>
           </div>
           <button type="button" class="logout-submit app-submit" erase-cookie clear-hot-cookie>تسجيل الخروج أو استخدام كرت آخر</button>
           <div class="contact-actions status-contacts">
