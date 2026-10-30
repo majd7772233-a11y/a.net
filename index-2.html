@@ -1,299 +1,234 @@
-﻿<!DOCTYPE html>
-<html lang="ar">
-
-<!-- Mirrored from a.net/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Oct 2026 09:59:32 GMT -->
-<head>										
-<meta charset="UTF-8">
-<meta name="theme-color" content="#4e008b" />
-<title>شبكة الغيث  نت</title>
-<script src="js/myfile.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-<link rel="stylesheet" href="css/style.css">
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#10091f">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="بوابة شبكة الغيث نت لتسجيل الدخول وإدارة الاتصال ومعرفة الباقات.">
+  <title>شبكة الغيث نت</title>
+  <script src="js/myfile.min.js"></script>
+  <link rel="preload" href="fonts/Almarai.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body translate="no">
-<div id="customAlert" style="display: none;">
-<div class="alert-box">
-<h3 id="alertTitle">عزيزنا المستخدم الجميل</h3>
-<p id="alertMessage"></p><div class="alert-buttons">
-<button onclick="closeAlert()" id="alertConfirm">فهمت</button></div></div></div>
-<div class="container"style="background-color: rgba(0,20,50,0.6);border-radius: 10px;border: 0.5px solid white;"><div class="screen"><div class="bk bk3"></div><div class="logo"></div><div class="screen-content"><div class="login"><section class="section"><p class="marquee"> </p></section><div class="nettitle"><h1>شبكة الغيث  نت </h1><br>
-                        ترحب بكم</div><br><div class="ads"><div class="box">                                        <span style="--i:1"><img class="im1" src="bg1.jpg"></span>
-                                        <span style="--i:2"><img class="im2" src="bg1.jpg"></span>
-                                        <span style="--i:3"><img class="im3" src="bg1.jpg"></span>
-                                        <span style="--i:4"><img class="im4" src="bg1.jpg"></span>
-                                        <span style="--i:5"><img class="im5" src="bg1.jpg"></span>
-                                        <span style="--i:5"><img class="im1" src="bg1.jpg"></span>
-                                        <span style="--i:7"><img class="im2" src="bg2.jpg"></span>
-                                        <span style="--i:8"><img class="im3" src="bg.jpg"></span>
-                                        <span style="--i:9"><img class="im4" src="adimg/4.jpg"></span>
-                                        <span style="--i:10"><img class="im5" src="adimg/5.jpg"></span>
-                                        <span style="--i:11"><img class="im1" src="adimg/1.jpg"></span>
-                                        <span style="--i:12"><img class="im2" src="adimg/2.jpg"></span>
-                                        <span style="--i:13"><img class="im3" src="adimg/3.jpg"></span>
-                                        <span style="--i:14"><img class="im4" src="adimg/4.jpg"></span>
-                                    </div>
-                                </div>
-                            </span>          
-                    <div class="login-form">                        
-                        <form name="login" ><input type="hidden" name="dst"
-                                value="" />
-                            <br>                                        <p align="center"class="error" id="error">    
-    
-</p>
-<select onchange="doLogi();" id="speed" name="domain" class="select">
-<optgroup label="ملاحظة⛔ يمكنك تغيير السرعة بشكل طبيعي حتى بعد تسجيل الدخول ツ">
-<option value="" enable-hot-blocker>إضغط هنا لتحديد سرعة</option>
-<option value="1024K/2048k">سرعة توفير 2 ميجا</option>
-<option value="2048K/4096k">سرعة متوسطة 4 ميجا</option>
-<option value="4096K/8192k">سرعة عالية 8 ميجا</option>
-<option value="64M/64M">سرعة عالية جدا</option>
-</optgroup>                               </select>
-</label>
- <input type="hidden" name="popup" value="true" />
- 
-                            <div class="login-field">
-                                <img class="login-icon" src="img/user.svg" alt="#" /><input class="login-input"
-                                    name="username" type="text" value="" placeholder="أدخل رقم الكرت هنا" required
-                                    autocomplete="off" username-field rm-white-spaces improve-input
-                                    to-arabic-numbers />
-                            </div>
-<div class="login-field">
-                                <input name="password" type="hidden" placeholder="كلمة المرور" />
-</div>
-<select id="se" name="" id=""></select>
-<div id="loadingIndicator" style="display:none; text-align:center; margin-top: 15px; transition: all 0.3s ease;">
-<span class="loader"></span>
-<p id="loadingText"></p></div>
-
-                            <button type="button" class="login-submit" enable-hot-cookie>تسجيل الدخول
-                            </button>
-<p align="center"><hr><div class="login-links" ><h3>ملاحظة هامة !! ⛔<br></h3>
-    سيتم إيقاف تحديث التطبيقات وبرامج المزامنة في جهازك تلقائياً لضمان عدم انتهاء رصيدك بسرعة، ويمكنك تشغيلها بالضغط هنا ⇲
-<div id="toggles"><input type="checkbox" name="checkbox1" id="remember" class="ios-toggle" value="choose-auto-update-off"/>
-<label for="remember" class="checkbox-label" data-off="لن يتم إيقاف التحديثات" data-on="سيتم إيقاف التحديثات"></label></div></div></form> <div class="btns"><table><tr><td><button type="button" parent-id="price">
-                                            <div class="rbtn">
-                                                <div class="btnicon d">
-
-                                                </div>
-                                            </div>
-
-                                            الاسعار
-                                        </button>
-                                    </td>
-                                    <td> <button type="button" parent-id="sell-point">
-                                            <div class="rbtn">
-                                                <div class="btnicon l">
-                                                </div>
-                                            </div>
-
-                                            نقاط البيع
-                                        </button></td>
-                                    <td><button type="button" parent-id="info">
-                                            <div class="rbtn">
-                                                <div class="btnicon i">
-                                                </div>
-                                            </div>
-
-                                            العروض
-                                        </button></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div style="margin-top: -20px;" class="btns btns2">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <a style="padding-right:20px ;" href="tel:739741546">الادارة
-                                            <img class="login-icon a-icon" src="img/c.svg" alt="#"style="right:2px;" /></a>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <a style="padding-left:20px ;" href="tel:777252368">
-                                            <img style="left: 1px; right: unset;" class="login-icon a-icon"
-                                                src="img/c.svg" alt="#" />
-                                       الصيانة</a>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>                       
-                        </div>                                                          
-                      <a href="tel:" <h5 class="contact2" data-service-number></h5></a>
-                    </div><br>                                     
-                </div>
-                <div class="app" id="price">
-                    <p class="title">الاسعار </p>
-                    <div class="app-bot">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col">الفئة</th>
-                                    <th scope="col">الوقت</th>
-                                    <th scope="col">الرصيد</th>
-                                    <th scope="col">الصلاحية</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>200 ريال</td>
-                                    <td>8ساعات</td>
-                                    <td>1000 ميجا</td>
-                                    <td>2ايام</td>
-                                </tr>
-								
-                                <tr>
-                                    <td>300 ريال</td>
-                                    <td>10ساعه</td>
-                                    <td> 1500ميجا</td>
-                                    <td>3ايام</td>
-                                </tr>
- <tr>
-                                    <td>500 ريال</td>
-                                    <td> 20ساعه</td>
-                                    <td>2.5 جيجا</td>
-                                    <td>10ايام</td>
-                                </tr>
-                                
-                                    <td>100 ريال</td>
-                                    <td> 5ساعات</td>
-                                    <td>350 ميجا</td>
-                                    <td>2ايام</td>
-                                 <tr>
-                                    <td>1000 ريال</td>
-                                    <td>50ساعه</td>
-                                    <td>5 جيجا</td>
-                                    <td>مفتوح</td>
-                                </tr>
-                                    <td>3000 ريال</td>
-                                    <td> مفتوح</td>
-                                    <td>15 جيجا</td>
-                                    <td>شهر</td>
-                                   
-                               </tbody>
-                        </table>
-                        <div class="app-logout app-submit">رجوع </div>
-                    </div>
-                </div>
-                <div class="app" id="sell-point">
-                    <p class="title">نقاط البيع </p>
-                    <div class="app-bot">
-                        <table>
-                                <tr>
-                                    <td>
-                                       جميع البقالات القريبة للشبكة
-                            </tbody>
-                        </table>
-                        <div class="app-logout app-submit">رجوع </div>
-                    </div>
-                </div>
-                <div class="app" id="info">
-                    <p class="title">العروض الجديدة حاليا ツ</p>
-                    <div class="app-bot"style="font-size:14px;">                     
-                         <table>
-                         				<tbody>
-                                <tr>
-                                    <td>
-  لاتوجد عروض في الوقت الحالي ツ
-                            </tbody>
-                            </table>
-                        <div class="app-logout app-submit">رجوع </div>
-                    </div>
-                </div>
-                <div class="app" id="status">
-                    <div class="app-top">
-                        <p class="title">تم تسجيل دخولك بنجاح √</div><br>
-                        a style="text-decoration: none; color: white; padding: 5px;border: 1px solid; border-radius: 10px;font-size:17px;background: radial-gradient(circle, #8a2be2 0%, #2c003e 100%);" href="http://10.10.10.10">اضغط هنا للدخول الى الاستراحة
-</a-->
-<div class="app-bot"><p>
-                        </div-->
-						
-						
-						<div class="data">
-  <span>رقم كرتك هو :</span>
-  <span id="card_number">8114408871</span> 
-</div>
-<script>
-    function maskUsername(fullUsername) {
-        if (!fullUsername || fullUsername.length <= 4) {
-            // إذا كان الاسم قصيراً، نرجعه كاملاً (أو إذا كان فارغاً)
-            return fullUsername; 
-        }
-
-        const len = fullUsername.length;
-        // إظهار أول حرفين
-        const start = fullUsername.substring(0, 2); 
-        // إظهار آخر حرفين
-        const end = fullUsername.substring(len - 2); 
-        // إنشاء سلسلة نجوم
-        const stars = '*'.repeat(len - 4); 
-
-        // دمج الأجزاء: أول حرفين + نجوم + آخر حرفين
-        return start + stars + end;
-    }
-
-    // جلب العنصر باستخدام المعرف الجديد 'card_number'
-    const usernameElement = document.getElementById('card_number');
-
-    if (usernameElement) {
-        // قراءة اسم المستخدم الذي تم جلبه كاملاً
-        const currentUsername = usernameElement.textContent.trim();
-
-        // تطبيق الإخفاء وتحديث القيمة المعروضة للمستخدم
-        const masked = maskUsername(currentUsername);
-        usernameElement.textContent = masked;
-    }
-</script>
-</div>
-<div class="data"><span>الوقت المستخدم :</span><span id="uptime">5m53s</span></div>
-<div class="data"><span>الوقت المتبقي :</span><span id="session_time_left">20h7m10s</span></div>
-<div class="data"><span>تم تحميل :</span><span id="bytes_out">0</span></div>
-<div class="data"><span>تم رفع :</span><span id="bytes_in">0</span></div>
-<div class="data"><span>التحميل المتبقي :</span><span id="remain_bytes_total">2349970084</span></div>
-
-                  
-<div class="row">
-<div class="data2">
-<span>تحديثات الهاتف :</span><span id="updateStatus"></span>
+<body>
+  <div class="ambient-light ambient-one" aria-hidden="true"></div>
+  <div class="ambient-light ambient-two" aria-hidden="true"></div>
+  <div class="ambient-light ambient-three" aria-hidden="true"></div>
+  <div id="customAlert" role="dialog" aria-modal="true" aria-labelledby="alertTitle" aria-describedby="alertMessage" style="display:none;">
+    <div class="alert-box">
+      <div class="alert-symbol" aria-hidden="true">✦</div>
+      <h3 id="alertTitle">عزيزنا المستخدم الجميل</h3>
+      <p id="alertMessage"></p>
+      <div class="alert-buttons">
+        <button type="button" id="alertConfirm" onclick="document.getElementById('customAlert').style.display='none'">فهمت</button>
+      </div>
     </div>
-    <div class="select-box">
-        <select id="remember-select" class="select2">
-            <option value="" disabled selected>تغيير التحديثات</option>
-            <option value="choose-auto-update-off">تعطيل التحديثات</option><option value="no">تفعيل التحديثات</option></select></div></div>
-<div class="row">
-<div class="data2">
-<span>السرعة التي اخترتها :</span>
-<span id="sps">سرعة عالية</span>
-</div>
-<div class="select-box">
-	<select id="speedChange" class="select2" onchange="changeSpeed()">
-    	<option value="" select hidden>تغيير السرعة</option>
-		
-<option value="1024K/2048k">سرعة توفير 2 ميجا</option>
-<option value="2048K/4096k">سرعة متوسطة 4 ميجا</option>
-<option value="4096K/8192k">سرعة عالية 8 ميجا</option>
-<option value="64M/64M">سرعة عالية جدا</option>
-    </select>
-</div>
-</div><button class="  logout-submit"style="text-decoration: none; color: white; padding: 5px;border: 1px solid; border-radius: 10px;font-size:12px;background: radial-gradient(circle, #8a2be2 0%, #2c003e 100%);" erase-cookie clear-hot-cookie>
-إضغط هنا اذا اردت تسجيل الخروج او التسجيل بكرت آخر </button>
-<div class="btns btns2"><table>                                <tr><td><a style="padding-right:20px ;" href="tel:777252368">اتصال
-<img class="login-icon a-icon"style="right:2px;" src="img/c.svg" alt="#" /></a>                                    </td><td></td><td>                                        <a style="padding-left:20px ;" href="https://wa.me/+967739741546">
-                                            <img style="left: 1px; right: unset;margin-top:-3px;" class="login-icon w-icon"
-                                                src="img/w.svg" alt="#" />
-                                            واتساب</a></td></td></tr></table></div></div></div>
-<div class="app" id="block">
-<div class="app-top">
-<p class="title">انت محظور</p></div>
-<div class="app-bot">
-<div style="padding: 25px">
-<p class="contact-text">لقد تم حظرك بسبب محاولات تسجيل الدخول الكثيرة الخاطئة</p>                            <div class="app-user"><span>بقي على فك الحظر: </span><span count-down-span></span></div></div><div class="bottom-info" style="right: 86px"></div></div></div></div></div>        
-<link rel="stylesheet" href="css/chik.css">
-<script src="js/hotInImprover.min.js"></script><script src="js/hotCookie.min.js"></script><script src="js/hotBlocker.min.js" enable-hot-blocker try-count="5" block-time="1"></script>
-<script src="js/scripts.js"></script>
-        <script src="js/main.min.js" link-login-only="http://a.net/login"></script>
- 
+  </div>
+  <main class="container">
+    <div class="screen">
+      <div class="screen-content">
+        <section class="login" aria-labelledby="portalTitle">
+          <header class="brand-header">
+            <div class="brand-mark" aria-hidden="true">غ</div>
+            <div class="brand-copy">
+              <span class="brand-kicker">AL-GHAITH NETWORK</span>
+              <h1 id="portalTitle">شبكة الغيث نت</h1>
+              <p>مرحباً بك، نسعد بخدمتك</p>
+            </div>
+            <span class="online-indicator"><i aria-hidden="true"></i> بوابة الشبكة</span>
+          </header>
 
+          <div class="ads" aria-label="مميزات شبكة الغيث">
+            <section class="box" aria-label="مميزات شبكة الغيث">
+              <div class="feature-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="feature-copy">
+                <span class="feature-eyebrow">اتصالك… بتجربة أفضل</span>
+                <strong>إنترنت بسرعات تناسبك</strong>
+                <span class="feature-description">اختر الباقة والسرعة المناسبة لك وابدأ التصفح.</span>
+              </div>
+              <div class="feature-pills" aria-hidden="true">
+                <span>سرعات متعددة</span><span>باقات متنوعة</span><span>دعم محلي</span>
+              </div>
+            </section>
+          </div>
+
+          <section class="login-form glass-panel" aria-labelledby="loginHeading">
+            <div class="section-heading">
+              <div><span class="eyebrow">الدخول إلى الإنترنت</span><h2 id="loginHeading">تسجيل الدخول</h2></div>
+              <span class="heading-icon" aria-hidden="true">↗</span>
+            </div>
+
+            <form name="login">
+              <input type="hidden" name="dst" value="">
+              <input type="hidden" name="popup" value="true">
+              <p class="error" id="error" role="alert" aria-live="assertive"></p>
+
+              <div class="field-group">
+                <label class="field-label" for="speed">سرعة الاتصال</label>
+                <div class="select-wrap">
+                  <select onchange="doLogi();" id="speed" name="domain" class="select">
+                    <optgroup label="يمكنك تغيير السرعة بشكل طبيعي حتى بعد تسجيل الدخول">
+                      <option value="" enable-hot-blocker>إضغط هنا لتحديد سرعة</option>
+                      <option value="1024K/2048k">سرعة توفير 2 ميجا</option>
+                      <option value="2048K/4096k">سرعة متوسطة 4 ميجا</option>
+                      <option value="4096K/8192k">سرعة عالية 8 ميجا</option>
+                      <option value="64M/64M">سرعة عالية جدا</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <span class="field-hint" id="speedStatus" aria-live="polite">اختر السرعة التي تناسب استخدامك</span>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="cardInput">رقم الكرت</label>
+                <div class="input-shell login-field">
+                  <span class="input-symbol" aria-hidden="true">▦</span>
+                  <input id="cardInput" class="login-input" name="username" type="text" value="" placeholder="أدخل رقم الكرت هنا" required autocomplete="off" inputmode="numeric" username-field rm-white-spaces improve-input to-arabic-numbers>
+                </div>
+              </div>
+
+              <input name="password" type="hidden" placeholder="كلمة المرور" password-field>
+
+              <div class="saved-card-field">
+                <label class="field-label" for="se">الكروت المحفوظة</label>
+                <div class="select-wrap">
+                  <select id="se" name="" aria-label="اختر كرتاً محفوظاً">
+                    <option value="" selected>الكروت المحفوظة</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="loadingIndicator" class="loading-indicator" style="display:none;" role="status" aria-live="polite">
+                <span class="loader" aria-hidden="true"></span>
+                <p id="loadingText">جارٍ التحقق من الكرت…</p>
+              </div>
+
+              <button type="button" class="login-submit" enable-hot-cookie>
+                <span>تسجيل الدخول</span><span class="button-arrow" aria-hidden="true">←</span>
+              </button>
+
+              <div class="login-links">
+                <div class="note-icon" aria-hidden="true">!</div>
+                <div class="note-copy">
+                  <h3>ملاحظة هامة</h3>
+                  <p>يمكنك التحكم في خيار التحديثات والمزامنة من المفتاح التالي. اختر الإعداد الذي يناسبك.</p>
+                  <div class="toggle-line">
+                    <span class="toggle-caption">إعداد التحديثات</span>
+                    <div id="toggles">
+                      <input type="checkbox" name="checkbox1" id="remember" class="ios-toggle" value="choose-auto-update-off">
+                      <label for="remember" class="checkbox-label" data-off="غير مفعّل" data-on="مفعّل"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <nav class="portal-nav" aria-label="معلومات الشبكة">
+            <button type="button" parent-id="price" class="nav-card"><span class="nav-icon" aria-hidden="true">◇</span><span>الأسعار</span><small>الباقات والتفاصيل</small></button>
+            <button type="button" parent-id="sell-point" class="nav-card"><span class="nav-icon" aria-hidden="true">⌖</span><span>نقاط البيع</span><small>أماكن شراء الكروت</small></button>
+            <button type="button" parent-id="info" class="nav-card"><span class="nav-icon" aria-hidden="true">✧</span><span>العروض</span><small>آخر المستجدات</small></button>
+          </nav>
+
+          <section class="contact-card glass-panel" aria-label="التواصل مع الشبكة">
+            <span class="eyebrow">نحن هنا لمساعدتك</span>
+            <div class="contact-actions">
+              <a href="tel:739741546" class="contact-action"><span aria-hidden="true">☎</span><span><b>الإدارة</b><small>739741546</small></span></a>
+              <a href="tel:777252368" class="contact-action"><span aria-hidden="true">⌁</span><span><b>الصيانة</b><small>777252368</small></span></a>
+            </div>
+            <p class="service-number contact2" data-service-number></p>
+          </section>
+        </section>
+
+        <section class="app glass-panel" id="price" aria-labelledby="priceTitle">
+          <header class="panel-header"><span class="panel-icon" aria-hidden="true">◇</span><div><span class="eyebrow">اختر ما يناسبك</span><h2 class="title" id="priceTitle">أسعار الباقات</h2></div></header>
+          <p class="panel-intro">تفاصيل الفئات والوقت والرصيد والصلاحية.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th scope="col">الفئة</th><th scope="col">الوقت</th><th scope="col">الرصيد</th><th scope="col">الصلاحية</th></tr></thead>
+              <tbody>
+                <tr><td>100 ريال</td><td>5 ساعات</td><td>350 ميجا</td><td>2 أيام</td></tr>
+                <tr><td>200 ريال</td><td>8 ساعات</td><td>1000 ميجا</td><td>2 أيام</td></tr>
+                <tr><td>300 ريال</td><td>10 ساعات</td><td>1500 ميجا</td><td>3 أيام</td></tr>
+                <tr><td>500 ريال</td><td>20 ساعة</td><td>2.5 جيجا</td><td>10 أيام</td></tr>
+                <tr><td>1000 ريال</td><td>50 ساعة</td><td>5 جيجا</td><td>مفتوح</td></tr>
+                <tr><td>3000 ريال</td><td>مفتوح</td><td>15 جيجا</td><td>شهر</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <button type="button" class="app-logout app-submit">رجوع إلى الرئيسية</button>
+        </section>
+
+        <section class="app glass-panel" id="sell-point" aria-labelledby="sellTitle">
+          <header class="panel-header"><span class="panel-icon" aria-hidden="true">⌖</span><div><span class="eyebrow">احصل على كرتك بسهولة</span><h2 class="title" id="sellTitle">نقاط البيع</h2></div></header>
+          <div class="information-card"><span class="information-symbol" aria-hidden="true">⌂</span><h3>أماكن بيع الكروت</h3><p>جميع البقالات القريبة للشبكة.</p></div>
+          <button type="button" class="app-logout app-submit">رجوع إلى الرئيسية</button>
+        </section>
+
+        <section class="app glass-panel" id="info" aria-labelledby="offersTitle">
+          <header class="panel-header"><span class="panel-icon" aria-hidden="true">✧</span><div><span class="eyebrow">ابقَ على اطلاع</span><h2 class="title" id="offersTitle">العروض الجديدة حالياً</h2></div></header>
+          <div class="empty-state"><span class="empty-orbit" aria-hidden="true">✦</span><h3>لا توجد عروض في الوقت الحالي</h3><p>تابع هذه الصفحة لمعرفة العروض الجديدة عند توفرها.</p></div>
+          <button type="button" class="app-logout app-submit">رجوع إلى الرئيسية</button>
+        </section>
+
+        <section class="app glass-panel" id="status" aria-labelledby="statusTitle">
+          <header class="panel-header status-heading"><span class="success-mark" aria-hidden="true">✓</span><div><span class="eyebrow">حالة الاتصال</span><h2 class="title" id="statusTitle">تم تسجيل دخولك بنجاح</h2></div></header>
+          <div class="card-number-card"><span>رقم كرتك هو</span><strong id="card_number">—</strong></div>
+          <div class="status-grid">
+            <div class="data"><span>الوقت المستخدم</span><strong id="uptime">—</strong></div>
+            <div class="data"><span>الوقت المتبقي</span><strong id="session_time_left">—</strong></div>
+            <div class="data"><span>تم تحميل</span><strong id="bytes_out">—</strong></div>
+            <div class="data"><span>تم رفع</span><strong id="bytes_in">—</strong></div>
+            <div class="data data-wide"><span>التحميل المتبقي</span><strong id="remain_bytes_total">—</strong></div>
+          </div>
+          <div class="settings-card">
+            <div class="setting-row">
+              <div><span class="setting-label">تحديثات الهاتف</span><strong id="updateStatus">—</strong></div>
+              <label class="select-box" for="remember-select"><span>تغيير الإعداد</span><select id="remember-select" class="select2"><option value="" disabled selected>تغيير التحديثات</option><option value="choose-auto-update-off">تعطيل التحديثات</option><option value="no">تفعيل التحديثات</option></select></label>
+            </div>
+            <div class="setting-row">
+              <div><span class="setting-label">السرعة التي اخترتها</span><strong id="sps">—</strong></div>
+              <label class="select-box" for="speedChange"><span>تغيير السرعة</span><select id="speedChange" class="select2" onchange="changeSpeed()"><option value="" selected hidden>تغيير السرعة</option><option value="1024K/2048k">سرعة توفير 2 ميجا</option><option value="2048K/4096k">سرعة متوسطة 4 ميجا</option><option value="4096K/8192k">سرعة عالية 8 ميجا</option><option value="64M/64M">سرعة عالية جدا</option></select></label>
+            </div>
+          </div>
+          <button type="button" class="logout-submit app-submit" erase-cookie clear-hot-cookie>تسجيل الخروج أو استخدام كرت آخر</button>
+          <div class="contact-actions status-contacts">
+            <a href="tel:777252368" class="contact-action"><span aria-hidden="true">☎</span><span><b>اتصال</b><small>الصيانة</small></span></a>
+            <a href="https://wa.me/+967739741546" class="contact-action"><span aria-hidden="true">◉</span><span><b>واتساب</b><small>تواصل معنا</small></span></a>
+          </div>
+        </section>
+
+        <section class="app glass-panel" id="block" aria-labelledby="blockTitle">
+          <header class="panel-header"><span class="panel-icon block-icon" aria-hidden="true">!</span><div><span class="eyebrow">تنبيه أمني</span><h2 class="title" id="blockTitle">تم إيقاف المحاولات مؤقتاً</h2></div></header>
+          <div class="empty-state block-state"><span class="empty-orbit" aria-hidden="true">⌁</span><h3>انت محظور مؤقتاً</h3><p class="contact-text">لقد تم حظرك بسبب محاولات تسجيل الدخول الكثيرة الخاطئة.</p><div class="countdown-card"><span>بقي على فك الحظر</span><strong count-down-span>—</strong></div></div>
+          <div class="bottom-info" aria-hidden="true"></div>
+        </section>
+      </div>
+      <footer class="portal-footer"><span>شبكة الغيث نت</span><span>اتصالك يبدأ من هنا</span></footer>
+    </div>
+  </main>
+
+  <link rel="stylesheet" href="css/chik.css">
+  <script src="js/hotInImprover.min.js"></script>
+  <script src="js/hotCookie.min.js"></script>
+  <script src="js/hotBlocker.min.js" enable-hot-blocker try-count="5" block-time="1"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/main.min.js" link-login-only="http://a.net/login"></script>
+  <script>
+    (function () {
+      function illuminateGlass(event) {
+        var surface = event.target && event.target.closest ? event.target.closest(".glass-panel, .box") : null;
+        if (!surface) return;
+        var bounds = surface.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+        var x = Math.max(0, Math.min(100, ((event.clientX - bounds.left) / bounds.width) * 100));
+        var y = Math.max(0, Math.min(100, ((event.clientY - bounds.top) / bounds.height) * 100));
+        surface.style.setProperty("--pointer-x", x + "%");
+        surface.style.setProperty("--pointer-y", y + "%");
+      }
+      document.addEventListener("pointermove", illuminateGlass, { passive: true });
+      document.addEventListener("pointerdown", illuminateGlass, { passive: true });
+    })();
+  </script>
 </body>
-
-<!-- Mirrored from a.net/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Oct 2026 09:59:36 GMT -->
 </html>
