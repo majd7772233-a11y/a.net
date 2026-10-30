@@ -80,4 +80,4 @@ Router/network serves local static files and responds to the existing relative h
 7. Check responsive widths, keyboard focus, contrast, and prefers-reduced-motion.
 
 ## Current State / Next Action
-Branch: redesign/liquid-glass-ui. Baseline: 8a4eb27aafbff8340c19703cb916253dbbf6916c. Stage 1 is documentation and safe-baseline establishment. Next eligible implementation: Stage 2, full visual redesign. No application source files changed during kickoff.
+Branch: redesign/liquid-glass-ui. Baseline: 8a4eb27aafbff8340c19703cb916253dbbf6916c. Stage 1 — Safe Baseline and Engineering Memory is complete. ROADMAP.md and GPT.md were committed and verified on `redesign/liquid-glass-ui` in commit `67a7394d8dd7e9ed71b7e53a088b9c9c1f94ccba`. Main remains unchanged. No application source files were changed. Next eligible implementation: Stage 2, full visual redesign.
